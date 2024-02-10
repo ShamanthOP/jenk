@@ -5,7 +5,7 @@ pipeline {
         stage('Print Hello') {
             steps {
                 script {
-                    echo 'Hello, World!'
+                    echo 'Pulling... ' + env.GIT_BRANCH
                 }
             }
         }
