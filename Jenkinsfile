@@ -12,7 +12,7 @@ pipeline {
         stage('Sleep') {
             steps {
                 script {
-                    sleep time: 3, unit: 'SECONDS'
+                    sleep time: 4, unit: 'SECONDS'
                 }
             }
         }
