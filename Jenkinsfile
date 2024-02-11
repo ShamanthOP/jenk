@@ -9,11 +9,11 @@ pipeline {
                 }
             }
         }
-        stage('Sleep') {
+        stage('Run playbook') {
             steps {
-                script {
-                    sleep time: 10, unit: 'SECONDS'
-                }
+                ansiblePlaybook(
+                    playbook: 'playbook.yml',
+                    inventory: 'inventory.hosts')
             }
         }
     }
