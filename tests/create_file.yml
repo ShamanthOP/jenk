@@ -1,0 +1,20 @@
+---
+- name: Check if a file exists
+  hosts: all
+  gather_facts: false
+  
+  tasks:
+    - name: Check if the file exists
+      stat:
+        path: test.txt
+      register: file_stat
+
+    - name: Fail if the file does not exist
+      fail:
+        msg: "The file does not exist."
+      when: not file_stat.stat.exists
+
+    - name: Display a message if the file exists
+      debug:
+        msg: "The file exists."
+      when: file_stat.stat.exists
