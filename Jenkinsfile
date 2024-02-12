@@ -19,7 +19,7 @@ pipeline {
                     echo "Groups: ${groups}"
 
                     def random = new Random()
-                    def randomGroup = groups[random.nextInt(groups.size())]
+                    randomGroup = groups[random.nextInt(groups.size())]
                     
                     echo "Randomly selected group: ${randomGroup}"
 
