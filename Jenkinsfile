@@ -1,4 +1,4 @@
-import java.util.random()
+import java.util.random
 
 pipeline {
     agent any
