@@ -2,17 +2,16 @@ pipeline {
     agent any
     
     stages {
-        stage('Print Hello') {
+        stage('Run ansible playbook') {
             steps {
                 script {
                     echo 'Pulling... ' + env.GIT_BRANCH
-                }
-            }
-        }
-        stage('Sleep') {
-            steps {
-                script {
-                    sleep time: 9, unit: 'SECONDS'
+                    def branchName = env.GIT_BRANCH
+                    def playbookName = branchName.split('/').size() == 1 ? branchName.split('/')[-1] : branchName.split('/')[1..-1].join('/')
+                    ansiblePlaybook(
+                        playbook: "${playbookName}.yml",
+                        inventory: 'inventory.hosts',
+                        installation: 'Ansible')
                 }
             }
         }
