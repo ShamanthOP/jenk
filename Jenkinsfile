@@ -11,7 +11,7 @@ pipeline {
                 script {
                     echo 'Pulling... ' + env.GIT_BRANCH
 
-                    def inventoryOutput = sh(script: 'ansible-inventory -i inventory.hosts --list', returnStdout: true).trim()
+                    def inventoryOutput = sh(script: '/usr/local/bin/ansible-inventory -i inventory.hosts --list', returnStdout: true).trim()
                     def json = readJSON text: inventoryOutput
                     def groups = json.keySet().findAll { it != "_meta" && it != "all" }
                     echo "Groups: ${groups}"
