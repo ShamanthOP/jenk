@@ -3,3 +3,5 @@
   file:
     path: "test.txt"
     state: touch
+- debug:
+    msg: "File created."
