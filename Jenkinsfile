@@ -36,7 +36,7 @@ pipeline {
                     ansiblePlaybook(
                         playbook: "tests/${BRANCH_NAME}.yml",
                         inventory: 'inventory.hosts',
-                        installation: 'Ansible'
+                        installation: 'Ansible',
                         limit: randomGroup)
                 }
             }
