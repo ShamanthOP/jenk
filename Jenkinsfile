@@ -1,5 +1,3 @@
-import java.util.random
-
 pipeline {
     agent any
     
