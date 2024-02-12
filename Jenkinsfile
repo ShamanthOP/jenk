@@ -21,23 +21,25 @@ pipeline {
                     
                     echo "Randomly selected group: ${randomGroup}"
 
-                    // ansiblePlaybook(
-                    //     playbook: "${BRANCH_NAME}.yml",
-                    //     inventory: 'inventory.hosts',
-                    //     installation: 'Ansible')
+                    ansiblePlaybook(
+                        playbook: "${BRANCH_NAME}.yml",
+                        inventory: 'inventory.hosts',
+                        installation: 'Ansible',
+                        limit: randomGroup)
                 }
             }
         }
         
-        // stage('Test ansible playbook') {
-        //     steps {
-        //         script {
-        //             ansiblePlaybook(
-        //                 playbook: "tests/${BRANCH_NAME}.yml",
-        //                 inventory: 'inventory.hosts',
-        //                 installation: 'Ansible')
-        //         }
-        //     }
-        // }
+        stage('Test ansible playbook') {
+            steps {
+                script {
+                    ansiblePlaybook(
+                        playbook: "tests/${BRANCH_NAME}.yml",
+                        inventory: 'inventory.hosts',
+                        installation: 'Ansible'
+                        limit: randomGroup)
+                }
+            }
+        }
     }
 }
