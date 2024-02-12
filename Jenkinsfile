@@ -11,7 +11,7 @@ pipeline {
                 script {
                     echo 'Pulling... ' + env.GIT_BRANCH
 
-                    def ansibleInventoryPath = sh(script: 'which ansible-inventory', returnStdout: true, returnStatus: true)
+                    def ansibleInventoryPath = sh(script: 'set +e && which ansible-inventory', returnStdout: true).trim()
                     echo ansibleInventoryPath
                     def inventoryOutput = sh(script: '${ansibleInventoryPath} -i inventory.hosts --list', returnStdout: true).trim()
                     def json = readJSON text: inventoryOutput
