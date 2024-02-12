@@ -1,8 +1,5 @@
 ---
-- hosts: all
-  become: no
-  tasks:
-  - name: Create text file
-    file:
-      path: "test.txt"
-      state: touch
+- name: Create text file
+  file:
+    path: "test.txt"
+    state: touch
