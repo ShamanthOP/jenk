@@ -1,4 +1,4 @@
-def BRANCH_NAME
+def randomGroup
 
 pipeline {
     agent any
@@ -19,7 +19,7 @@ pipeline {
                     echo "Groups: ${groups}"
 
                     def random = new Random()
-                    def global.randomGroup = groups[random.nextInt(groups.size())]
+                    def randomGroup = groups[random.nextInt(groups.size())]
                     
                     echo "Randomly selected group: ${randomGroup}"
 
