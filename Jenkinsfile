@@ -13,6 +13,13 @@ pipeline {
                 script {
                     echo 'Pulling... ' + env.GIT_BRANCH
 
+                    def queueItems = Jenkins.instance.getQueue().getItems()
+                    queueItems.each { item ->
+                        println "Item: ${item}"
+                    }
+                    
+                    sleep time: 30, unit: 'SECONDS'
+
                     def inventoryOutput = sh(script: '/usr/local/bin/ansible-inventory -i inventory.hosts --list', returnStdout: true).trim()
                     def json = readJSON text: inventoryOutput
                     def groups = json.keySet().findAll { it != "_meta" && it != "all" }
