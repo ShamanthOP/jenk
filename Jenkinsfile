@@ -11,7 +11,7 @@ pipeline {
         stage('Run ansible playbook') {
             steps {
                 script {
-                    echo 'Pulling... ' + env.GIT_BRANCH
+                    echo 'Pulling.. ' + env.GIT_BRANCH
 
                     def queueItems = Jenkins.instance.getQueue().getItems()
                     queueItems.each { item ->
