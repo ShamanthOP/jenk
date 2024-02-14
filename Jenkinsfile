@@ -17,13 +17,13 @@ pipeline {
                     queueItems.each { item ->
                         println "Item: ${item}"
                     }
-                    
+
                     sleep time: 30, unit: 'SECONDS'
 
                     def inventoryOutput = sh(script: '/usr/local/bin/ansible-inventory -i inventory.hosts --list', returnStdout: true).trim()
                     def json = readJSON text: inventoryOutput
                     def groups = json.keySet().findAll { it != "_meta" && it != "all" }
-                    echo "Groups: ${groups}!"
+                    echo "Groups : ${groups}!"
 
                     def random = new Random()
                     randomGroup = groups[random.nextInt(groups.size())]
