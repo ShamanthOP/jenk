@@ -15,7 +15,7 @@ pipeline {
 
                     def queueItems = Jenkins.instance.getQueue().getItems()
                     queueItems.each { item ->
-                        println "Item: ${item}"
+                        println "Item:  ${item}"
                     }
 
                     sleep time: 30, unit: 'SECONDS'
